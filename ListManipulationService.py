@@ -2,8 +2,8 @@ from nameko.rpc import rpc
 from dahuffman import HuffmanCodec
 import math
 
-class GreetingService:
-    name = "greeting_service"
+class ListManipulationService:
+    name = "list_manipulation_service"
 
     @rpc
     def squareOddNumbers(self, numbersList = []):
