@@ -1,0 +1,11 @@
+version: '2'
+services:
+  echo:
+    build: ./
+    restart: always
+    volumes:
+     - .:/code  
+    depends_on:
+     - rabbitmq
+  rabbitmq:
+    image: "rabbitmq"
