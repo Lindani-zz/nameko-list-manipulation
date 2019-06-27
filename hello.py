@@ -6,20 +6,19 @@ class GreetingService:
     name = "greeting_service"
 
     @rpc
-    def squareOddNumbers(self, numbers = []):
-        oddNumbers = list(filter(lambda number: number % 2, numbers))
-        res = list(map(lambda oddNumber: math.sqrt(oddNumber), oddNumbers))
-        return res
+    def squareOddNumbers(self, numbersList = []):
+        oddNumbers = list(filter(lambda number: number % 2, numbersList))
+        squareOddNumberList = list(map(lambda oddNumber: math.sqrt(oddNumber), oddNumbers))
+        return squareOddNumberList
 
     @rpc
     def encodedStringDict(self, listOfStrings = []):
         codec = HuffmanCodec.from_data(listOfStrings)
-        encoded = codec.encode(listOfStrings)
-        encodedDict = dict( zip(listOfStrings, encoded ))
-        return encodedDict
+        encodeResults = codec.encode(listOfStrings)
+        def decodeListOfString(encode):
+            decodeResults = codec.decode(encode)
+            return decodeResults
+        decodedList = decodeListOfString(encodeResults)
 
-
-
-    # ["hello", "at" , "test" , "this" , "here" , "now" ]
-
-    # [1, 2, 3, 4, 5, 6, 9]
+        encodedDict = dict( zip(listOfStrings, encodeResults ))
+        return encodedDict, decodedList
